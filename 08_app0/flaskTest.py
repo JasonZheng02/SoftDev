@@ -8,9 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    print(__name__)
-    file = open("Static/HTML.html", "r")
-    return file.read()
+    return "HELLO WORLD"
 
 @app.route("/1")
 def hello():
