@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{foo}}</title>
+    </head>
+    <body>
+    <h1> Random occupation generator</h1>
+    <p> This page generates a random job based on the given data.</p>
+    <p> Team Marxist: Jason Zheng & Kenenth Chin </p>
+    <p> Your Job is: {{job}} </p>
+    <br>
+  {% for item in collection %}
+      {{item[0] + " " + item[1]}}
+      <br> {% endfor %}
+    </body>
+</html>
