@@ -1,7 +1,8 @@
+# Team Green Cheese
 # Jason Zheng
 # SoftDev1 pd09
-# K
-# Date
+# K#15 Do I Know You?
+# 2019-10-07
 
 from flask import Flask, render_template, request
 app = Flask(__name__)
