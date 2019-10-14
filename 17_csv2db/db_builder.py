@@ -25,7 +25,7 @@ c.execute(command)
 
 with open('students.csv', 'r') as csvfile:
     file = csv.DictReader(csvfile, delimiter = ",")
-    for line in reader:
+    for line in file:
         command = "INSERT INTO students VALUES (\"" + line['name'] + "\"," + line['age'] + "," + line['id'] + ");"
         # insert name, age, id into table
         c.execute(command)
