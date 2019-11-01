@@ -1,0 +1,13 @@
+html {
+	background-color: #404040;
+}
+body {
+	background-color: Gray;
+}
+h1 {
+	text-align: center;
+	background-color: LightGray;
+}
+h1,a {
+	color: white;
+}
