@@ -12,10 +12,30 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
-    url = urlopen("https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/Jason8924?api_key=RGAPI-ab734053-2408-4416-85a9-274df0786d20")
+    return ""
+    
+@app.route("/taco")
+def taco():
+    url = urlopen("http://taco-randomizer.herokuapp.com/random/")
     response = url.read()
     data = json.loads(response)
-    return render_template("data.html", championLevel = data['url'])
+    food = data["condiment"]
+    return render_template("taco.html", name = food["name"], recipe = food["recipe"])
+    
+@app.route("/country")
+def country():
+    url = urlopen("https://restcountries.eu/rest/v2")
+    response = url.read()
+    data = json.loads(response)
+    country = data[10]
+    return render_template("country.html", name=country['name'],capital=country['capital'])
+    
+@app.route("/currency")
+def currency():
+    url = urlopen("https://api.exchangerate-api.com/v4/latest/USD")
+    response = url.read()
+    data = json.loads(response)
+    return render_template("currency.html", currency = data["base"], rate = data["rates"]["AUD"])
 
 if __name__ == "__main__":
     app.debug = True
