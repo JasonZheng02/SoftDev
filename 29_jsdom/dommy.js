@@ -18,11 +18,11 @@ for (var i = 0; i < lis.length; i++) {
 var addItem = function() {
   var list = document.getElementById("thelist");
   var item = document.createElement("li");
+  item.addEventListener( 'mouseover', function(){changeHeading(this.innerHTML)});
+  item.addEventListener( 'mouseout', function(){changeHeading("Hello World!")});
+  item.addEventListener( 'click', function(){removeItem(this)});
   item.innerHTML = "WORD";
   list.append(item);
-  ele.addEventListener('click', function(e){removeItem(this), console.log(e);});
-  ele.addEventListener('mouseover', function(){changeHeading(this.innerHTML)});
-  ele.addEventListener('mouseout', function(){changeHeading("Hello World!")});
 }
 
 var button = document.getElementById("b");
@@ -46,5 +46,18 @@ var addFib = function(e) {
 	list.append(item);
 }
 
+var addFib2 = function(e) {
+  var list = document.getElementById("fiblist");
+  var len = list.getElementsByTagName("li").length;
+  var item = document.createElement("li");
+	if (len < 2){
+    item.innerHTML = 1;
+  }
+  else{
+    item.innerHTML = list[len].innerHTML + list[len - 1].innerHTML;
+  }
+	list.append(item);
+}
+
 var fb = document.getElementById("fb");
-fb.addEventListener("click", addFib);
+fb.addEventListener("click", addFib2);
