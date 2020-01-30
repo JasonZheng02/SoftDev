@@ -1,3 +1,8 @@
+// Leia Park and Jason Zheng
+// SoftDev1 pd9
+// K29 -- Sequential Progression III: Season of the Witch
+// 2019-12-16
+
 var changeHeading = function(e) {
   var h = document.getElementById("h");
   h.innerHTML = e;
@@ -29,7 +34,7 @@ var button = document.getElementById("b");
 button.addEventListener('click', addItem);
 
 var fib = function(n) {
-	if ( n < 2 ){
+	if ( n <= 2 ){
 		return 1;
 	}
 	else{
@@ -45,18 +50,21 @@ var addFib = function(e) {
 	item.innerHTML = fib(len);
 	list.append(item);
 }
+var FibList = [];
 
 var addFib2 = function(e) {
-  var list = document.getElementById("fiblist");
-  var len = list.getElementsByTagName("li").length;
-  var item = document.createElement("li");
-	if (len < 2){
-    item.innerHTML = 1;
-  }
-  else{
-    item.innerHTML = list[len].innerHTML + list[len - 1].innerHTML;
-  }
-	list.append(item);
+    var list = document.getElementById("fiblist");
+    var len = FibList.length
+    var item = document.createElement("li");
+    if (len < 2){
+	item.innerHTML = 1;
+	FibList.push(1);
+    }
+    else{
+	item.innerHTML = FibList[len - 1] + FibList[len - 2];
+	FibList.push(FibList[len - 1] + FibList[len - 2]);	
+    }
+    list.append(item);
 }
 
 var fb = document.getElementById("fb");
