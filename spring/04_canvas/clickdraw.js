@@ -26,6 +26,12 @@ var dot = function(){
 
 var change = function(){
   isToggled = !isToggled;
+  if (isToggled){
+    toggle.innerHTML = "Rectangle";
+  }
+  else{
+    toggle.innerHTML = "Dot";
+  }
 }
 
 var draw = function(){
