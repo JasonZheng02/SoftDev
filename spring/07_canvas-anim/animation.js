@@ -9,10 +9,14 @@ var c = document.getElementById("playground");
 var ctx = c.getContext("2d");
 var radius = 10;
 var isIncreasing = true;
-var id;
+var id = null;
 
-// Creates a dot at mouse location
+var clean = function() {
+  ctx.clearRect(0, 0, c.width, c.height);
+}
+
 var dot = function() {
+  clean();
   ctx.beginPath();
   ctx.arc(c.width/2, c.height/2, radius, 0, 2 * Math.PI);
   ctx.fill();
@@ -30,10 +34,18 @@ var dot = function() {
   else {
     radius = radius - 0.5;
   }
-  window.requestAnimationFrame(dot);
+  id = window.requestAnimationFrame(dot);
 }
 
 var start = document.getElementById("animation");
-start.addEventListener("click", dot);
+start.addEventListener("click", function(){
+  if (id == null){
+    dot();
+  }
+});
 
-c.addEventListener("click", dot);
+var stop = document.getElementById("stop");
+stop.addEventListener("click", function(){
+  window.cancelAnimationFrame(id);
+  id = null;
+})
