@@ -3,7 +3,7 @@
 // K08: What is it saving the screen from?
 // 2020-02-14
 // --------------------------------------------------
-
+//Used given code for 07_canvas-anim
 //model for HTML5 canvas-based animation
 
 //access canvas and buttons via DOM
@@ -20,18 +20,21 @@ ctx.fillStyle = "#00ffff";
 
 var requestID;
 
+//clears canvas
 var clear = function(e) {
   e.preventDefault();
   ctx.clearRect(0, 0, 500, 500);
 };
 
-
 var radius = 0;
 var growing = true;
-var x = 10;
-var y = 10;
+
 var logo = new Image();
 logo.src = "logo_dvd.jpg";
+var x = Math.floor(Math.random() * c.width);
+var y = Math.floor(Math.random() * c.height);
+var dx = 0.5;
+var dy = 0.5;
 
 var drawDot = function() {
   window.cancelAnimationFrame( requestID );
@@ -65,10 +68,26 @@ var showDVD = function() {
 
   ctx.clearRect( 0, 0, c.width, c.height );
 
+  //if logo hits the canvas
+  if (x + 100 == c.width){
+    dx = -0.5;
+  }
+  if (x == 0){
+    dx = 0.5;
+  }
+  if (y + 100 == c.height){
+    dy = -0.5;
+  }
+  if (y == 0){
+    dy = 0.5;
+  }
 
-  ctx.drawImage( logo , x, y);
-  x = x + .1;
-  y = x + .1;
+  x = x + dx;
+  y = x + dy;
+
+  //draw the image
+  ctx.drawImage( logo , x, y, 100, 100);
+
   requestID = window.requestAnimationFrame( showDVD );
 };
 
