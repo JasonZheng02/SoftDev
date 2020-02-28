@@ -1,3 +1,8 @@
+# Jason Zheng
+# SoftDev Pd. 2
+# K09: Yummy Mongo Py
+# 2020-02-28
+
 from pymongo import MongoClient
 
 client = MongoClient()
