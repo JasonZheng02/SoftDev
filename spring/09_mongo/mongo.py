@@ -1,15 +1,21 @@
 from pymongo import MongoClient
 
-client = MongoClient("mongodb://localhost:27017/")
-db = client["database"]
-col = db["restaurants"]
+client = MongoClient()
+db = client.database
+restaurants = db.restaurants
 
-file = open("primer-dataset.json", "r")
-content = file.readlines()
-for line in content:
-    col.insert_one(line)
+f = open("primer-dataset.json", 'r')
+lines = f.readlines()
+restaurants.insert_many(lines)
 
-#getting this error
-#document must be an instance of dict, bson.son.SON,
-#bson.raw_bson.RawBSONDocument, or a type that inherits
-#from collections.MutableMapping
+def find_borough(borough):
+    return(restaurants.find({"borough": borough}))
+
+def find_zip(zip):
+    return(restaurants.find({"address.zipcode": zipcode}))
+
+def find_zip_grade(zipcode, grade):
+    return restaurants.find({"address.zipcode" : zipcode, "grades.grade" : grade})
+
+def find_zip_score(zipcode, score):
+    return restaurants.find({"address.zipcode": zipcode, "grades.score" : {"$lt" : score}})
