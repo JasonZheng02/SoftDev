@@ -4,23 +4,42 @@
 # 2020-02-28
 
 from pymongo import MongoClient
+from bson.json_util import loads
 
-client = MongoClient()
-db = client.database
-restaurants = db.restaurants
+client = MongoClient('localhost', 27017)
+db = client["test"]
+col = db["restaurants"]
 
 f = open("primer-dataset.json", 'r')
 lines = f.readlines()
-restaurants.insert_many(lines)
+for line in lines:
+    col.insert_one(loads(line))
 
 def find_borough(borough):
-    return(restaurants.find({"borough": borough}))
+    cursor = col.find({"borough": borough})
+    
+    for document in cursor:
+        print(document)
 
-def find_zip(zip):
-    return(restaurants.find({"address.zipcode": zipcode}))
+def find_zip(zipcode):
+    cursor = col.find({"address.zipcode": zipcode})
+    
+    for document in cursor:
+        print(document)
 
 def find_zip_grade(zipcode, grade):
-    return restaurants.find({"address.zipcode" : zipcode, "grades.grade" : grade})
+    cursor = col.find({"address.zipcode": zipcode, "grades.0.grade": grade})
+    
+    for document in cursor:
+        print(document)
 
 def find_zip_score(zipcode, score):
-    return restaurants.find({"address.zipcode": zipcode, "grades.score" : {"$lt" : score}})
+    cursor = col.find({"address.zipcode": zipcode, "grades.0.score": { "$lt": score } })
+    
+    for document in cursor:
+        print(document)
+
+#find_borough("Manhattan")
+#find_zip("10009")
+#find_zip_grade("10009", "A")
+find_zip_score("10009", 1)
