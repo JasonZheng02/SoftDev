@@ -31,8 +31,5 @@ def get_rarity(spawn_Percentage):
         print(document)
         print('')
 
-#def get_rarity_name(spawn_Percentage, first_Letter):
-#    cursor = col.find({"spawn_chance": {"$lt": spawn_Percentage / 100}, "name":  })
-
 #get_type("Electric")
 get_rarity(1)
