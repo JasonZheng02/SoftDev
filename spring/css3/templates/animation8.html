@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "utf-8">
+  <title>CSS3</title>
+  <style>
+    @keyframes example {
+      from {top: 0px;}
+      to {top: 200px; background-color: blue;}
+    }
+    #animate {
+      width: 100px;
+      height: 100px;
+      background: red;
+      position: relative;
+      animation-name: example;
+      animation-duration: 3s;
+      animation-fill-mode: backwards;
+    }
+  </style>
+</head>
+<body>
+  <h1> ANIMATIONS!!! </h1>
+  <div id="animate"> </div>
+  <br><br><br><br><br><br><br><br><br><br><br>
+  <pre>
+  <code>
+    div {
+      width: 100px;
+      height: 100px;
+      background: red;
+      position: relative;
+      animation-name: example;
+      animation-duration: 3s;
+      animation-fill-mode: backwards;
+    }
+
+    @keyframes example {
+      from {top: 0px;}
+      to {top: 200px; background-color: blue;}
+    }
+  </code>
+  </pre>
+  <a href="/">Next</a>
+</body>
+</html>

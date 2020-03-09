@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "utf-8">
+  <title>CSS3</title>
+  <style>
+    @keyframes example {
+      0%   {background-color:red; left:0px; top:0px;}
+      25%  {background-color:yellow; left:200px; top:0px;}
+      50%  {background-color:blue; left:200px; top:200px;}
+      75%  {background-color:green; left:0px; top:200px;}
+      100% {background-color:red; left:0px; top:0px;}
+    }
+    #animate {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      background-color: red;
+      animation-name: example;
+      animation-duration: 4s;
+      animation-delay: 2s;
+      animation-iteration-count: 3;
+    }
+  </style>
+</head>
+<body>
+  <h1> ANIMATIONS!!! </h1>
+  <div id="animate"> </div>
+  <br><br><br><br><br><br><br><br><br><br><br>
+  <pre>
+  <code>
+    div {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      background-color: red;
+      animation-name: example;
+      animation-duration: 4s;
+      animation-delay: 2s;
+      animation-iteration-count: 3;
+    }
+  </code>
+  </pre>
+  <p> animation-iteration-count: infinite; </p>
+  <a href="/animation5">Next</a>
+</body>
+</html>
