@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Pokedex </title>
+  	</head>
+  	<body id="body">
+		{% for pokemon in data %}
+			<div>
+				Name: {{pokemon['name']}}
+				<br>
+				<img src={{pokemon['img']}}>
+				<br>
+				{% if query == "type" %}
+					Type:
+					{% if pokemon['type']|length == 2 %}
+						{{pokemon['type'][0]}}, {{pokemon['type'][1]}}
+					{% else %}
+						{{pokemon['type'][0]}}
+					{% endif %}
+				{% elif query == "rarity" %}
+					Rarity: {{pokemon['spawn_chance']}}
+				{% endif %}
+				<br><br><br>
+			</div>
+		{% endfor %}
+  	</body>
+</html>
