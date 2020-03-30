@@ -5,7 +5,7 @@
 
 var pic = document.getElementById("vimage");
 var clear = document.getElementById("clean");
-var prevX, p  revY;
+var prevX, prevY;
 
 var clean = function(){
   while (pic.lastChild) {
